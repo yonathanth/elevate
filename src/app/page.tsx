@@ -43,7 +43,7 @@ export default function Home() {
                 <span className="block text-base font-medium tracking-[0.3em] text-white/70 sm:text-lg">
                   The
                 </span>
-                <span className="text-gradient mt-1 block py-[0.04em] font-display text-[length:var(--big)] leading-[0.95] tracking-wide">
+                <span className="gritty-gradient-text mt-1 block py-[0.04em] font-display text-[length:var(--big)] leading-[0.95] tracking-wide">
                   Biggest
                 </span>
                 <span className="mt-2 block text-[clamp(1.3rem,3.4vw,2.6rem)] font-bold leading-tight tracking-tight">
