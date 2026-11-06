@@ -1,69 +1,111 @@
 import Image from "next/image";
+import Link from "next/link";
+import Header from "@/components/Header";
+import JoinButton from "@/components/JoinButton";
+import VideoTour from "@/components/VideoTour";
+import Facilities from "@/components/Facilities";
+import Offerings from "@/components/Offerings";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main>
+      {/* Hero */}
+      <div className="relative flex min-h-svh flex-col overflow-hidden">
+        {/* Background */}
         <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/hero-gym.jpg"
+          alt="Athlete gripping a loaded barbell for a deadlift"
+          fill
           priority
+          sizes="100vw"
+          className="object-cover object-[65%_center] brightness-[0.6] saturate-[0.8]"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/10 to-transparent" />
+
+        <Header />
+
+        {/* Content column: background stays full-bleed, content is capped and centered */}
+        <div className="page-width relative z-10 flex flex-1 flex-col">
+          {/* Mobile & tablet: play button centered just above the headline */}
+          <div className="flex flex-1 items-end justify-center md:hidden">
+            <VideoTour />
+          </div>
+
+          {/* Hero copy */}
+          <section className="relative mt-auto px-6 pb-12 pt-8 md:px-12 md:pb-16 md:pt-24">
+            {/* --big drives both the BIGGEST size and the play button's vertical
+                position, so the button stays centered on that line at every size */}
+            <div className="relative [--big:clamp(4rem,11vw,8.5rem)]">
+              <h1 className="rise uppercase">
+                <span className="block text-base font-medium tracking-[0.3em] text-white/70 sm:text-lg">
+                  The
+                </span>
+                <span className="text-gradient mt-1 block py-[0.04em] font-display text-[length:var(--big)] leading-[0.95] tracking-wide">
+                  Biggest
+                </span>
+                <span className="mt-2 block text-[clamp(1.3rem,3.4vw,2.6rem)] font-bold leading-tight tracking-tight">
+                  Gym in Ethiopia &amp; East Africa
+                </span>
+              </h1>
+
+              {/* Desktop: beside BIGGEST. Top = "The" line height + its gap, then half the
+                  BIGGEST line (0.95 leading + 0.08em padding) */}
+              <div className="absolute right-10 top-[calc(2rem_+_var(--big)*0.515)] hidden -translate-y-1/2 scale-[1.15] md:block lg:right-16">
+                <VideoTour />
+              </div>
+            </div>
+
+            <div className="flex items-end justify-between gap-8">
+              <div className="max-w-3xl">
+                <p
+                  className="rise mt-5 max-w-md text-[15px] leading-relaxed text-white/70 sm:text-base"
+                  style={{ animationDelay: "120ms" }}
+                >
+                  3,612 m² of premium equipment, coached classes and recovery
+                  spaces, all built to take your training to the next level.
+                </p>
+                <div
+                  className="rise mt-8 flex items-center gap-8"
+                  style={{ animationDelay: "240ms" }}
+                >
+                  <JoinButton />
+                  <Link
+                    href="#offerings"
+                    className="text-[15px] text-white/90 underline-offset-4 hover:text-brand hover:underline"
+                  >
+                    See our offerings
+                  </Link>
+                </div>
+              </div>
+
+              <a
+                href="#facilities"
+                className="hidden items-center gap-2 text-[15px] text-white/80 transition-colors hover:text-brand md:flex"
+              >
+                Scroll down
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </a>
+            </div>
+          </section>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+
+      <Facilities />
+      <Offerings />
+      <Contact />
+      <Footer />
+    </main>
   );
 }
